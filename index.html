@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Mastermind</title>
+</head>
+<body>
+  <div class="main">
+    <div class="header-container">
+      <h2>Mastermind</h2>
+    </div>
+    <div class="game-area">
+      
+      <div class="dot-row secret-row">
+        <span class="dot secret"><p class = "question-mark">?</p></span>
+        <span class="dot secret"><p class = "question-mark">?</p></span>
+        <span class=" dot secret"><p class = "question-mark">?</p></span>
+        <span class="dot secret"><p class = "question-mark">?</p></span>
+        <p class = "attempts"> 6</p>
+      </div>
+      <div class = "colors-rows">
+        <span class = "game-comments">COLORS:</span>
+        <span class = "playing-colors">
+          <span class="colors-dot purple"></span>
+          <span class="colors-dot yellow"></span>
+          <span class="colors-dot green"></span>
+          <span class="colors-dot pink"></span>
+          <span class="colors-dot orange"></span>
+          <span class="colors-dot blue"></span>
+        </span>
+      </div>
+      <p class="error-message">Please choose all 4 colors</p>
+      <div class="dot-row attempt-row">
+        <span class="color1 dot btn " type = "button"></span>
+        <span class="color2 dot btn "></span>
+        <span class="color3 dot btn "></span>
+        <span class="color4 dot btn "></span>
+        <button class="attempt-btn"  type="button"> attempt</button>  
+      </div>
+      <div class="attempt-history-container">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class = "reply-container">
+          <div>
+            <span class="dot-small"></span>
+            <span class="dot-small"></span>
+          </div>
+          <div>
+            <span class="dot-small"></span>
+            <span class="dot-small"></span>
+          </div>
+        </span>
+      </div>
+      <div class="attempt-history-container">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class = "reply-container">
+          <div>
+            <span class="dot-small"></span>
+            <span class="dot-small"></span>
+          </div>
+          <div>
+            <span class="dot-small"></span>
+            <span class="dot-small"></span>
+          </div>
+        </span>
+      </div>
+      <div class="attempt-history-container">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class = "reply-container">
+          <div>
+            <span class="dot-small"></span>
+            <span class="dot-small"></span>
+          </div>
+          <div>
+            <span class="dot-small"></span>
+            <span class="dot-small"></span>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

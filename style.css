@@ -1,0 +1,222 @@
+/* 
+Color scheme
+
+background color: #121212;
+grey dots: #333333;
+light grey font: #979797;
+green: #56b07c;
+
+playing colors:
+
+blue: #0278ee;
+orange: #ff913e;
+pink: #dd0074;
+green: #02ee78;
+yellow: #e9e741;
+purple: #b148f4;
+*/
+
+
+*{
+padding: 0;
+margin: 0;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  background-color: rgb(90, 90, 90);
+}
+
+h2{
+  font-weight: 100;
+  letter-spacing: 3px;
+}
+
+.main{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #121212;
+  margin: 3% 33%;
+  padding-bottom: 5%;
+  border-radius: 20px;
+  min-height: 85vh;
+  min-width: 400px;
+}
+
+/* .game-area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: #121212; 
+} */
+
+.header-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333333;
+  color: #979797;
+  margin: 60px  0px 30px 0px;
+  padding: 20px 0px;
+  width: 100%;
+}
+
+/* Secret colors row */
+
+.secret-row{
+  display: flex;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+.dot {
+  height: 1px;
+  width: 1px;
+  padding: 25px;
+  margin: 4px 4px;
+  background-color: #3a3a3a;
+  border-radius: 50%;
+}
+
+.dot-small{
+  height: 1px;
+  width: 1px;
+  padding: 8px;
+  margin: 3px;
+  background-color: #3a3a3a;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.secret{
+  height: 20px;
+  width: 20px;
+  padding: 15px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #40815b;
+  color: #40815b;
+}
+
+.question-mark{
+  padding-left: 4px;
+  font-size: 20px;
+}
+
+
+.colors-rows{
+  padding: 10px 0 0 0px;
+}
+
+.playing-colors{
+  padding: 7px 0 0 7px;
+}
+
+/* Game rules / colors */
+
+.game-comments{
+  color: #56b07c;
+}
+
+.colors-dot{
+  height: 1px;
+  width: 1px;
+  padding: 7px;
+  margin: 2px 2px;
+  background-color: #3a3a3a;
+  border-radius: 50%;
+  display: inline-flex;
+}
+
+/* Attempts section */
+
+.error-message{
+  color: white;
+  background-color: rgb(222, 0, 0);
+  font-size: 16px;
+  /* padding-top: 12px; */
+  visibility: hidden;
+}
+
+/* .attempt-container{
+  display: flex;
+  display: inline-block; 
+  padding-left: 40px;
+} */
+
+.attempts{
+  color: #56b07c;
+  font-size: 35px;
+  margin-top: 10px;
+}
+
+.attempt-row{
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  /* border: #56b07c;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 50px; */
+}
+
+.btn{
+
+}
+
+.btn:hover {
+  opacity: 0.8;
+  cursor:pointer;
+  scale: 1.05;
+}
+
+.attempt-btn{
+  margin: 0 0 0px 30px;
+  padding: 5px;
+
+}
+
+.attempt-history-container{
+  display: flex;
+  align-items: center;
+}
+
+.reply-container{
+  display: inline-block;
+  padding-left: 20px;
+} 
+
+
+
+
+
+/* ****************** */
+
+
+.purple{
+  background-color: #933acb;
+}
+
+.yellow{
+  background-color: #f3f05c;
+}
+
+.green{
+  background-color: #02ee78;
+}
+
+.pink{
+  background-color: #dd0074;
+}
+
+.orange{
+  background-color: #ff913e;
+}
+
+.blue{
+  background-color: #0278ee;
+}
