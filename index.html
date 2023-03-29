@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/ed28ad789c.js" crossorigin="anonymous"></script>
   <title>Mastermind</title>
 </head>
 <body>
@@ -14,16 +15,16 @@
     </div>
     <div class="game-area">
       
-      <div class="dot-row secret-row">
+      <div class="row-container">
         <span class="dot secret"><p class = "question-mark">?</p></span>
         <span class="dot secret"><p class = "question-mark">?</p></span>
         <span class=" dot secret"><p class = "question-mark">?</p></span>
         <span class="dot secret"><p class = "question-mark">?</p></span>
-        <p class = "attempts"> 6</p>
+        <p class = "attempts"> </p>
       </div>
-      <div class = "colors-rows">
+      <div class = "row-container">
         <span class = "game-comments">COLORS:</span>
-        <span class = "playing-colors">
+        <span class = "row-container">
           <span class="colors-dot purple"></span>
           <span class="colors-dot yellow"></span>
           <span class="colors-dot green"></span>
@@ -33,64 +34,54 @@
         </span>
       </div>
       <p class="error-message">Please choose all 4 colors</p>
-      <div class="dot-row attempt-row">
-        <span class="color1 dot btn " type = "button"></span>
+      <div class="row-container">
+        <span class="color1 dot btn "></span>
         <span class="color2 dot btn "></span>
         <span class="color3 dot btn "></span>
         <span class="color4 dot btn "></span>
-        <button class="attempt-btn"  type="button"> attempt</button>  
+        <i class="fa fa-solid fa-arrow-right fa-lg attempt-btn"></i>
+        <!-- <i class="fa fa-solid fa-play"></i> </i>  -->
       </div>
-      <div class="attempt-history-container">
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class = "reply-container">
-          <div>
-            <span class="dot-small"></span>
-            <span class="dot-small"></span>
-          </div>
-          <div>
-            <span class="dot-small"></span>
-            <span class="dot-small"></span>
-          </div>
-        </span>
+      <div class = "attempt-history-container">
+        <div class="each-attempt-history">
+          <span class="dot-medium "></span>
+          <span class="dot-medium "></span>
+          <span class="dot-medium "></span>
+          <span class="dot-medium "></span>
+          <span class = "reply-container">
+            <div>
+              <span class="dot-small"></span>
+              <span class="dot-small"></span>
+            </div>
+            <div>
+              <span class="dot-small"></span>
+              <span class="dot-small"></span>
+            </div>
+          </span>
+        </div>
       </div>
-      <div class="attempt-history-container">
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class = "reply-container">
-          <div>
-            <span class="dot-small"></span>
-            <span class="dot-small"></span>
-          </div>
-          <div>
-            <span class="dot-small"></span>
-            <span class="dot-small"></span>
-          </div>
-        </span>
-      </div>
-      <div class="attempt-history-container">
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class = "reply-container">
-          <div>
-            <span class="dot-small"></span>
-            <span class="dot-small"></span>
-          </div>
-          <div>
-            <span class="dot-small"></span>
-            <span class="dot-small"></span>
-          </div>
-        </span>
-      </div>
+      
     </div>
   </div>
 
+  <!-- <div class = "attempt-history-container history-template">
+    <div class="each-attempt-history">
+      <span class="dot-medium-1"></span>
+      <span class="dot-medium-2"></span>
+      <span class="dot-medium-3"></span>
+      <span class="dot-medium-4"></span>
+      <span class = "reply-container">
+        <div>
+          <span class="dot-small"></span>
+          <span class="dot-small"></span>
+        </div>
+        <div>
+          <span class="dot-small"></span>
+          <span class="dot-small"></span>
+        </div>
+      </span>
+    </div>
+  </div> -->
   <script src="script.js"></script>
 </body>
 

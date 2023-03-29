@@ -60,18 +60,21 @@ h2{
   align-items: center;
   background-color: #333333;
   color: #979797;
-  margin: 60px  0px 30px 0px;
-  padding: 20px 0px;
+  margin: 70px  0px 80px 0px;
+  padding: 30px 0px;
   width: 100%;
+}
+
+.row-container{
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 10px 0;
 }
 
 /* Secret colors row */
 
-.secret-row{
-  display: flex;
-  align-items: center;
-  padding-bottom: 15px;
-}
+
 
 .dot {
   height: 1px;
@@ -82,14 +85,30 @@ h2{
   border-radius: 50%;
 }
 
+.dot-medium {
+  height: 1px;
+  width: 1px;
+  padding: 22px;
+  margin: 4px 4px;
+  background-color: #232323;
+  border-radius: 50%;
+}
+
 .dot-small{
   height: 1px;
   width: 1px;
   padding: 8px;
-  margin: 3px;
-  background-color: #3a3a3a;
+  margin: 2px;
+  background-color: #2a2a2a;
   border-radius: 50%;
   display: inline-block;
+}
+
+.secret-row{
+  display: flex;
+  align-items: center;
+  padding-bottom: 15px;
+  background-color: #3a3a3a;
 }
 
 .secret{
@@ -109,27 +128,25 @@ h2{
 
 
 .colors-rows{
-  padding: 10px 0 0 0px;
-}
-
-.playing-colors{
-  padding: 7px 0 0 7px;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
 }
 
 /* Game rules / colors */
 
 .game-comments{
   color: #56b07c;
+  padding: 2px 10px 0 10px;
 }
 
 .colors-dot{
   height: 1px;
   width: 1px;
   padding: 7px;
-  margin: 2px 2px;
+  margin: 4px 4px;
   background-color: #3a3a3a;
   border-radius: 50%;
-  display: inline-flex;
 }
 
 /* Attempts section */
@@ -151,7 +168,8 @@ h2{
 .attempts{
   color: #56b07c;
   font-size: 35px;
-  margin-top: 10px;
+  margin-top: 4px;
+  padding-left: 45px;
 }
 
 .attempt-row{
@@ -165,31 +183,47 @@ h2{
 }
 
 .btn{
-
 }
 
 .btn:hover {
   opacity: 0.8;
   cursor:pointer;
-  scale: 1.05;
 }
 
 .attempt-btn{
-  margin: 0 0 0px 30px;
-  padding: 5px;
+  background-color:#499267;
+  color: white;
+  margin: 0 0 0px 25px;
+  padding: 15px 28px;
+  border-radius: 15%;
+}
 
+.attempt-btn:hover{
+  background-color: #62c58b;;
+  cursor:pointer;
+  scale: 1.05;
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
 }
 
 .attempt-history-container{
   display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.each-attempt-history{
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
 .reply-container{
-  display: inline-block;
   padding-left: 20px;
 } 
-
 
 
 
@@ -206,7 +240,11 @@ h2{
 }
 
 .green{
-  background-color: #02ee78;
+  background-color: #22ca76;
+}
+
+.dark-green{
+  background-color: #45a26c;
 }
 
 .pink{
@@ -219,4 +257,8 @@ h2{
 
 .blue{
   background-color: #0278ee;
+}
+
+.grey{
+  background-color: grey;
 }
