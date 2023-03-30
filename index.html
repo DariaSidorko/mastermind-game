@@ -13,8 +13,37 @@
     <div class="header-container">
       <h2>Mastermind</h2>
     </div>
-    <div class="game-area">
-      
+    <div class = "setting-container">
+      <form class = "attempts-form">
+        <h3>Number of attempts</h3>
+        <div class = "label-list">
+          <input type="radio" id="att1" name="attempts" value="10" checked>
+          <label for="att1">10</label><br>
+          <input type="radio" id="att2" name="attempts" value="8">
+          <label for="att2">8</label><br> 
+          <input type="radio" id="att3" name="attempts"  value="6">
+          <label for="att3">6</label><br>
+        </div>
+      </form>
+      <form class = "time-form">
+        <h3>Timer options</h3>
+        <div class = "label-list">
+          <input type="radio" id="time1" name="time" value="0" checked>
+          <label for="time1">none</label checkedl><br>
+          <input type="radio" id="time2" name="time" value="1">
+          <label for="time2">10 min</label><br> 
+          <input type="radio" id="time3" name="time" value="15">
+          <label for="time1">15 min</label ><br>
+        </div>
+        <!-- <input type="submit" value="Submit"> -->
+      </form>
+
+      <button class="generic-btn start">Start</button>
+
+    </div>
+    
+
+    <div class="game-container">
       <div class="row-container">
         <span class="dot secret"><p class = "question-mark">?</p></span>
         <span class="dot secret"><p class = "question-mark">?</p></span>
@@ -31,6 +60,7 @@
           <span class="colors-dot pink"></span>
           <span class="colors-dot orange"></span>
           <span class="colors-dot blue"></span>
+          <span id="ten-countdown"></span>
         </span>
       </div>
       <p class="error-message">Please choose all 4 colors</p>
@@ -62,6 +92,21 @@
       </div>
       
     </div>
+  </div>
+
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class = "end-game-container">
+        <h2 class = "end-message-1"></h2>
+        <h1 class = "end-message-2"></h1>
+        <p class = "end-message-3"></p>
+        <div class = "winning-row"></div>
+        <button class = "generic-btn new-game">NEW GAME</button>
+      </div>
+    </div>
+  
   </div>
 
   <!-- <div class = "attempt-history-container history-template">

@@ -19,53 +19,84 @@ function randomColorsArray(numOfColors){
 }
 
 
-let attempts = 10;
+let timeLimit;
 let computerColors = [];
 let numberOfColors = 4;
-let numOfAttempts = 3;
+let numOfAttempts = 10;
+let attemptsCounter = 0;
+let history_array = [];
 
-document.querySelector('.attempts').textContent = numOfAttempts
+let start = document.querySelector('.start');
+let settings = document.querySelector('.setting-container');
+let game_area = document.querySelector('.game-container');
+let attempt_btn = document.querySelector('.attempt-btn');
+let span = document.querySelector(".close");
+let history_container = document.querySelector('.attempt-history-container');
+let new_game = document.querySelector('.new-game');
+let attemptsLeft = document.querySelector('.attempts');
+let modal =  document.querySelector("#myModal");
+
+
 
 // computerColors = randomColorsArray(numberOfColors);
 computerColors = ['purple', 'purple', 'purple', 'purple'];
 
 
 // papulating history row dynamicaly
-let history_array = [];
-let history_container = document.querySelector('.attempt-history-container');
-
-
-function papulate_history_array(array){
+function papulate_history_array(){
   let each_history = document.querySelector('.each-attempt-history');
- //console.log(each_history)
+  let array = [];
   array.push(each_history)
   for(let i=1; i<numOfAttempts; i++){
     array[i] = each_history.cloneNode(true);
-    //array[i].classList.add('each-attempt-history')
   }
   return array;
 }
 
 function update_history_array(array){
-  console.log('Updating!!')
-  console.log(array)
   history_container.innerHTML = "";
   for(let i=0; i<array.length; i++){
-    //console.log(array[i])
     history_container.appendChild(array[i]);
   }
-  console.log(history_container)
 }
 
-history_array = papulate_history_array(history_array);
+function isWon(array){
+  for(each of array){
+    if(each !== 'dark-green') return false
+  }
+  return true
+}
 
-// history_array.pop();
-// history_array.pop();
-update_history_array(history_array);
+game_area.classList.add('remove');
 
-//history_container.removeChild(history_container.children[0])
-//update_history_array(history_array);
-  
+start.addEventListener('click', (e) => {
+
+  settings.classList.add('remove');
+  game_area.classList.remove('remove');
+  game_area.classList.add('fadeInn');
+
+  for (let i=1; i<4; i++){
+    if (document.querySelector('#att' + i).checked){
+      numOfAttempts = document.querySelector('#att' + i).value;
+    }
+    if (document.querySelector('#time' + i).checked){
+      time = document.querySelector('#time' + i).value;
+    }
+  }
+
+  history_array = papulate_history_array();
+  update_history_array(history_array);
+
+  attemptsLeft.textContent = numOfAttempts - attemptsCounter;
+
+  if(time > 0) {
+    countdown( "ten-countdown", time, 0 );
+    setTimeout(timeUp, time * 60000);
+  }
+})
+
+
+
 
 
 // Allows user to choose colors for the guessing attempt
@@ -91,8 +122,11 @@ for (let i=1; i<5; i++){
 
 // main logic
 
+//let temp = document.querySelector('#att1');
+//console.log(temp.value);
 
-let attempt_btn = document.querySelector('.attempt-btn');
+
+
 attempt_btn.addEventListener('click', (e) => {
   let playerColors = [];
   // error check that all the colors were entered;
@@ -162,26 +196,95 @@ attempt_btn.addEventListener('click', (e) => {
     for (let i=1; i<5; i++){
       document.querySelector('.color' + i).classList.remove(playerColors[i-1]);
     }
-    numOfAttempts--;
-    document.querySelector('.attempts').textContent = numOfAttempts;
-
+    //numOfAttempts--;
+    attemptsCounter++;
+    attemptsLeft.textContent = numOfAttempts - attemptsCounter;
+    let message3 = document.querySelector('.end-message-3');
     if(isWon(computerAnswer)){
       update_history_array(history_array);
-      alert('You WON!');
-      location.reload();
+      modal.style.display = "block";
+      document.querySelector('.end-message-1').textContent = "Congratulations!";
+      document.querySelector('.end-message-2').textContent = "You won the game!";
+      game_area.classList.add('remove');
+      if (attemptsCounter === 1){
+        message3.textContent = `Great job!! You won with ${attemptsCounter} attempt!`;
+      } else if (attemptsCounter < 5){
+        message3.textContent = `Great job!! You won with ${attemptsCounter} attempts!`;
+      } else {
+        message3.textContent = `Not bad!! You won with ${attemptsCounter} attempts!`;
+      }
+      let winning_row = history_array.shift();
+      winning_row.removeChild(winning_row.lastElementChild);
+      document.querySelector('.winning-row').appendChild(winning_row);
     }
-    else if(numOfAttempts === 0 && !isWon(computerAnswer) ){
+    else if(numOfAttempts - attemptsCounter === 0 && !isWon(computerAnswer) ){
       update_history_array(history_array);
-      alert('You LOST!');
-      location.reload();
+      modal.style.display = "block";
+      document.querySelector('.end-message-1').textContent = "Bummer!";
+      document.querySelector('.end-message-2').textContent = "Game over";
+      message3.textContent = `Try again.`;
     }
     }
 
 });
 
-function isWon(array){
-  for(each of array){
-    if(each !== 'dark-green') return false
+
+
+window.addEventListener('click', function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    location.reload();
   }
-  return true
+});
+
+span.addEventListener('click', () => {
+  modal.style.display = "none";
+  location.reload();
+});
+
+new_game.addEventListener('click', () => {
+  modal.style.display = "none";
+  location.reload();
+});
+
+
+// **************************************
+
+// Timer function
+function countdown( elementName, minutes, seconds )
+{
+    var element, endTime, hours, mins, msLeft, time;
+
+    function twoDigits( n )
+    {
+        return (n <= 9 ? "0" + n : n);
+    }
+
+    function updateTimer()
+    {
+        msLeft = endTime - (+new Date);
+        if ( msLeft < 1000 ) {
+            element.innerHTML = "Time is up!";
+        } else {
+            time = new Date( msLeft );
+            hours = time.getUTCHours();
+            mins = time.getUTCMinutes();
+            element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
+            setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
+        }
+    }
+
+    element = document.getElementById( elementName );
+    endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
+    updateTimer();
+}
+
+// time is up modal
+function timeUp() {
+  let message3 = document.querySelector('.end-message-3');
+  modal.style.display = "block";
+  document.querySelector('.end-message-1').textContent = "Time is up!";
+  document.querySelector('.end-message-2').textContent = "Game over";
+  message3.textContent = `Try again.`;
+  modal.style.display = "none";
 }
