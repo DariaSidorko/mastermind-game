@@ -30,6 +30,7 @@ body{
 h1{
   font-weight: 600;
   letter-spacing: 1px;
+  text-align: center;
 }
 
 h2{
@@ -56,8 +57,8 @@ p{
   padding-bottom: 5%;
   border-radius: 20px;
   min-height: 80vh;
-  min-width: 400px;
-  /* max-width: 400px; */
+  min-width: 450px;
+  max-width: 600px;
 }
 
 .setting-container{
@@ -67,7 +68,7 @@ p{
   flex-direction: column;
   padding-top: 20px;
   animation: fadeIn 1.5s;
-  color:#45a26c;
+  color:#4db277;
 }
 
 form{
@@ -86,7 +87,7 @@ form{
 }
 
 input{
-  margin-left: 15px;
+  margin-left: 35px;
   appearance: none;
   -webkit-appearance: none;
   border-radius: 50%;
@@ -111,7 +112,7 @@ input:checked{
 label{
   padding-left: 10px;
   font-size: 18px;
-  color: #979797;
+  color: #adadad;
 }
 
 .game-container{
@@ -122,16 +123,17 @@ label{
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   background-color: #333333;
   color: #979797;
-  margin: 70px  0px 80px 0px;
+  margin: 70px  0px 30px 0px;
   padding: 30px 0px;
   width: 100%;
 }
 
 .row-container{
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
   padding: 10px 0;
 }
@@ -177,7 +179,7 @@ label{
   border-style: solid;
   border-color: #40815b;
   color: #40815b;
-  animation: flashingFadeIn 5s;
+  animation: flashingFadeIn 3s;
 }
 
 @keyframes flashingFadeIn {
@@ -240,8 +242,7 @@ label{
 .attempts{
   color: #56b07c;
   font-size: 35px;
-  margin-top: 4px;
-  padding-left: 45px;
+  margin: 4px 0 0 15px;
 }
 
 .attempt-row{
@@ -258,7 +259,7 @@ label{
 }
 
 .btn:hover {
-  opacity: 0.8;
+  opacity: 0.6;
   cursor:pointer;
 }
 
@@ -266,7 +267,7 @@ label{
   background-color:#499267;
   color: white;
   font-size: 16px;
-  padding: 20px 35px;
+  padding: 20px 40px;
   border-radius: 10px;
   margin-top: 80px;
 }
@@ -297,6 +298,29 @@ label{
   border-width: 1px;
   border-style: solid;
 }
+
+.rule-btn{
+  background-color:#333333;
+  color: rgb(174, 174, 174);
+  font-size: 16px;
+  padding: 6px 30px;
+  border-radius: 10px;
+  margin-top: 20px;
+  border-color: rgb(113, 113, 113);
+  border-width: 1px;
+  border-style: solid;
+  
+}
+
+.rule-btn:hover{
+  cursor:pointer;
+  scale: 1.05;
+  border-color: rgb(113, 113, 113);
+  border-width: 1px;
+  border-style: solid;
+  background-color:#505050;
+}
+
 
 .attempt-history-container{
   display: flex;
@@ -366,7 +390,11 @@ label{
 }
 
 .grey{
-  background-color: grey;
+  background-color: #333333;
+}
+
+.white{
+  background-color: rgb(221, 221, 221);
 }
 
 .hide{
@@ -384,7 +412,8 @@ label{
 /* The Modal (background) */
 .modal {
   margin: 0;
-  display: none; /* Hidden by default */
+  display: none; 
+  /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-bottom: 5%;
@@ -411,12 +440,13 @@ label{
   background-color: #121212;
   color: #499267;
   /* margin: auto; */
-  margin: 7% 34%;
-  min-height: 70%;
+  margin: 7% 33%;
+  min-height: 50%;
   padding: 20px 20px;
   border: 1px solid #333333;
   border-radius: 20px;
-  min-width: 360px;
+  min-width: 420px;
+  max-width: 570px;
 }
 
 /* The Close Button */
@@ -440,13 +470,85 @@ label{
 
 /* *********************** */
 
-#ten-countdown {
-  /* text-align: center; */
-  padding: 5px 20px;
-  margin-left: 25px;
+#timer {
+  margin: 5px 0 0 30px;
   color: #56b07c;
-  /* font-family: Verdana, sans-serif, Arial; */
-  font-size: 30px;
+  font-size: 35px;
   font-weight: bold;
-  text-decoration: none;
+}
+
+/* window.scroll({
+  top: 100,
+  left: 100,
+  behavior: "smooth",
+}); */
+
+
+.rules-modal-content{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-color: #121212;
+  color: #499267;
+  margin: 3% 33%;
+  padding: 40px 30px;
+  border: 1px solid #333333;
+  border-radius: 20px;
+
+  max-height: 80vh;
+  min-width: 450px;
+  max-width: 600px;
+}
+
+.rules-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px 0;
+  overflow:auto;
+  max-height: 70vh;
+  padding: 0 10px;
+}
+
+div.rules-container > p{
+  color: #aaaaaa;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+div.rules-modal-content > button{
+  margin-top: 30px;
+}
+
+div.rules-modal-content > h1{
+  padding-bottom: 30px;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #b2b2b2;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #646464;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.attempt-num{
+color: #333333;
+font-size: 40px;
+padding-right: 10px;
+min-width: 15px;
 }

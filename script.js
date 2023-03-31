@@ -9,11 +9,11 @@
 
 let colors = ['purple', 'yellow', 'green', 'pink', 'orange', 'blue'];
 
+// function that creates random color sequence for the computer side
 function randomColorsArray(numOfColors){
   let array = [];
   for(let i=0; i<numOfColors; i++){
     array.push(colors[Math.floor(Math.random() * 6)]);
-    //console.log(Math.floor(Math.random() * num))
   }
   return array
 }
@@ -21,10 +21,11 @@ function randomColorsArray(numOfColors){
 
 let timeLimit;
 let computerColors = [];
-let numberOfColors = 4;
-let numOfAttempts = 10;
+const numberOfColors = 4;
+let numOfAttempts;
 let attemptsCounter = 0;
 let history_array = [];
+
 
 let start = document.querySelector('.start');
 let settings = document.querySelector('.setting-container');
@@ -34,12 +35,20 @@ let span = document.querySelector(".close");
 let history_container = document.querySelector('.attempt-history-container');
 let new_game = document.querySelector('.new-game');
 let attemptsLeft = document.querySelector('.attempts');
-let modal =  document.querySelector("#myModal");
+let modal =  document.querySelector("#winLooseModal");
+let modal_rules =  document.querySelector("#rulesModal");
+let message3 = document.querySelector('.end-message-3');
+let rules = document.querySelector('.rule-btn');
+let close_rules_modal = document.querySelector('.close-rules-modal');
 
 
+// generating random colors for the computer code
+computerColors = randomColorsArray(numberOfColors);
 
-// computerColors = randomColorsArray(numberOfColors);
-computerColors = ['purple', 'purple', 'purple', 'purple'];
+// console output for testing purposes
+console.log("computer collors: " + computerColors);
+// test case 
+// computerColors = ['purple', 'purple', 'green', 'purple'];
 
 
 // papulating history row dynamicaly
@@ -53,6 +62,7 @@ function papulate_history_array(){
   return array;
 }
 
+// updating history row
 function update_history_array(array){
   history_container.innerHTML = "";
   for(let i=0; i<array.length; i++){
@@ -60,6 +70,7 @@ function update_history_array(array){
   }
 }
 
+// check if player won
 function isWon(array){
   for(each of array){
     if(each !== 'dark-green') return false
@@ -67,39 +78,83 @@ function isWon(array){
   return true
 }
 
+// Timer function
+function countdown( elementName, minutes, seconds )
+{
+    var element, endTime, hours, mins, msLeft, time;
+
+    function twoDigits( n )
+    {
+        return (n <= 9 ? "0" + n : n);
+    }
+    function updateTimer()
+    {
+        msLeft = endTime - (+new Date);
+        if ( msLeft < 1000 ) {
+            element.innerHTML = "0";
+        } else {
+            time = new Date( msLeft );
+            hours = time.getUTCHours();
+            mins = time.getUTCMinutes();
+            element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
+            setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
+        }
+    }
+
+    element = document.getElementById( elementName );
+    endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
+    updateTimer();
+}
+
+
+// time is up modal
+function timeUp() {
+  modal.style.display = "block";
+  document.querySelector('.end-message-1').textContent = "Time is up!";
+  document.querySelector('.end-message-2').textContent = "Game over";
+  message3.textContent = `Try again.`;
+  game_area.classList.add('remove');
+}
+
+//hiding game area ho display settings on the home screen first
 game_area.classList.add('remove');
 
+// main start of the game button
 start.addEventListener('click', (e) => {
 
+  // hiding settings, displaying main game area with fade in effect
   settings.classList.add('remove');
-  game_area.classList.remove('remove');
   game_area.classList.add('fadeInn');
-
+  game_area.classList.remove('remove');
+  
+  // adding setting for the player into the game
   for (let i=1; i<4; i++){
+    // number of attempts
     if (document.querySelector('#att' + i).checked){
       numOfAttempts = document.querySelector('#att' + i).value;
     }
+    // timer
     if (document.querySelector('#time' + i).checked){
       time = document.querySelector('#time' + i).value;
     }
   }
 
+  // populating history row with 
   history_array = papulate_history_array();
   update_history_array(history_array);
 
+  // updating number of attepts left for the front end 
   attemptsLeft.textContent = numOfAttempts - attemptsCounter;
 
+  // setting up timer if shosen in settings by the player
   if(time > 0) {
-    countdown( "ten-countdown", time, 0 );
+    countdown( "timer", time, 0 );
     setTimeout(timeUp, time * 60000);
   }
 })
 
 
-
-
-
-// Allows user to choose colors for the guessing attempt
+// This part allows user to choose colors for the guessing attempt
 let colorObj = [];
 for (let i=1; i<5; i++){
   colorObj[i-1] = document.querySelector('.color' + i);
@@ -120,17 +175,16 @@ for (let i=1; i<5; i++){
   });
 }
 
-// main logic
-
-//let temp = document.querySelector('#att1');
-//console.log(temp.value);
 
 
 
+// main game logic
 attempt_btn.addEventListener('click', (e) => {
   let playerColors = [];
-  // error check that all the colors were entered;
+  // error tracker for players input
   let error = 0;
+
+  // error message output when user hit submit without entering all 4 colors
   for (let i=0; i<4; i++){
     if(colorObj[i].classList[colorObj[i].classList.length-1] === 'btn'){
       error++;
@@ -144,68 +198,81 @@ attempt_btn.addEventListener('click', (e) => {
     }
   }
 
+  // error check that all the colors were entered;
   if(error === 0){
-    // console.log("Computer colors: " + computerColors);
-    // console.log("Players colors: " + playerColors);
-    let computerAnswer = [];
+    // creating copies of all the original arrays to be able to mark matched colors to avoid duplicates in the computer answer row
+    let computerAnswer = ['grey', 'grey', 'grey', 'grey'];
     let tempComputerColors = [...computerColors];
-
-        // console.log(i +  " " + j + ") Players color: " + playerColors[i])
-        // console.log(i +  " " + j + ") Computer color: " + computerColors[j])
-        // console.log(playerColors[i] === computerColors[j])
-        // console.log(i===j)
-        // console.log('*************')
-    for (let i=0; i<4; i++){
-      for (let j=0; j<4; j++){
-        if (i === j && playerColors[i] === tempComputerColors[j]){
-          computerAnswer[i] = 'dark-green';
-          tempComputerColors[j] = 'black';
+    let tempPlayerColors = [...playerColors];
+    let answerIterator = 0;
+    // first round of iterastions to mark all the exact matches(same color, same position, green)
+    for (let i=0; i<tempPlayerColors.length; i++){
+      for (let j=0; j<tempComputerColors.length; j++){
+        if (i === j && tempPlayerColors[i] === tempComputerColors[j]){
+          computerAnswer[answerIterator] = 'dark-green';
+          answerIterator++;
+          // marking mached collors to "remove" them and avoid duplicates in reply
+          tempComputerColors[j] = '#';
+          tempPlayerColors[i] = '$'
         }
       }
-    }
-
-    for (let i=0; i<4; i++){
-      for (let j=0; j<4; j++){
-      if (i !== j && playerColors[i] === computerColors[j] && computerAnswer[i] !== '.white' && computerAnswer[i] !== 'dark-green'){
-          computerAnswer[i] = 'white';
-          tempComputerColors[j] = 'black';
-          //console.log(i +  " " + j + ") WHITE goes in")
-        } else if (computerAnswer[i] !== 'white' && computerAnswer[i] !== 'dark-green'){
-        computerAnswer[i] = 'grey'
-        //console.log(i +  " " + j + ") GREY goes in")
-        }
+    } 
+    // second round of iterations to mark all the color matches, but wrong position (white)
+    for (let i=0; i<tempPlayerColors.length; i++){
+      for (let j=0; j<computerColors.length; j++){
+      if (tempPlayerColors[i] === computerColors[j]){
+          computerAnswer[answerIterator] = 'white';
+          answerIterator++;
+          tempComputerColors[j] = '#';
+          tempPlayerColors[i] = '$'
+        } 
       }
     }
-    console.log('Computer answer: ' + computerAnswer);
     
+    // grabbing the last history row to insert it an to insert
     let active_history_row = history_array.pop();
 
+    // adding players colors classes to the correspodding history row
     for(let i=0; i<active_history_row.children.length-1; i++){
-      active_history_row.children[i].classList.add(playerColors[i]);
+      active_history_row.children[i+1].classList.add(playerColors[i]);
     }
 
-    
-    active_history_row.children[4].children[0].children[0].classList.add(computerAnswer[0])
-    active_history_row.children[4].children[0].children[1].classList.add(computerAnswer[1])
+    // adding color classes to the computer response  
+    //first row
+    active_history_row.children[5].children[0].children[0].classList.add(computerAnswer[0])
+    active_history_row.children[5].children[0].children[1].classList.add(computerAnswer[1])
+    // second row
+    active_history_row.children[5].children[1].children[0].classList.add(computerAnswer[2])
+    active_history_row.children[5].children[1].children[1].classList.add(computerAnswer[3])
 
-    active_history_row.children[4].children[1].children[0].classList.add(computerAnswer[2])
-    active_history_row.children[4].children[1].children[1].classList.add(computerAnswer[3])
-
+    // pushing updated history row with computer response to the beginning the array (to shot up on top on the front end)
     history_array.unshift(active_history_row);
+    // updating history section
     update_history_array(history_array);
+
+    // removing previosly selected colors by the player form the front end
     for (let i=1; i<5; i++){
       document.querySelector('.color' + i).classList.remove(playerColors[i-1]);
     }
-    //numOfAttempts--;
+    // adding 1 to attempt counter
     attemptsCounter++;
+    
+    // adding uttempt number to the left side of the history row
+    document.querySelector('.attempt-num').textContent = attemptsCounter;
+
+    // updating front end attemts left for this game
     attemptsLeft.textContent = numOfAttempts - attemptsCounter;
-    let message3 = document.querySelector('.end-message-3');
+    
+    // checking if user won or lost the game
     if(isWon(computerAnswer)){
+    
       update_history_array(history_array);
+      // show the modal and populate it with "User won messages"
       modal.style.display = "block";
       document.querySelector('.end-message-1').textContent = "Congratulations!";
       document.querySelector('.end-message-2').textContent = "You won the game!";
       game_area.classList.add('remove');
+      // customisation of the message base on how many attemps it took user to win the game
       if (attemptsCounter === 1){
         message3.textContent = `Great job!! You won with ${attemptsCounter} attempt!`;
       } else if (attemptsCounter < 5){
@@ -213,78 +280,63 @@ attempt_btn.addEventListener('click', (e) => {
       } else {
         message3.textContent = `Not bad!! You won with ${attemptsCounter} attempts!`;
       }
+      // grabbing a winning history row and removing all the extras to showcase in the modal
       let winning_row = history_array.shift();
       winning_row.removeChild(winning_row.lastElementChild);
+      winning_row.removeChild(winning_row.firstElementChild);
+      // adding that winning row of colors to the modal
       document.querySelector('.winning-row').appendChild(winning_row);
+      game_area.classList.add('remove');
     }
     else if(numOfAttempts - attemptsCounter === 0 && !isWon(computerAnswer) ){
       update_history_array(history_array);
+      // show the modal and populate it with "Game ower"
       modal.style.display = "block";
       document.querySelector('.end-message-1').textContent = "Bummer!";
       document.querySelector('.end-message-2').textContent = "Game over";
       message3.textContent = `Try again.`;
+      game_area.classList.add('remove');
     }
     }
 
 });
 
 
+// all the event listeners
 
+// modal closing when clicked outside of the modal
 window.addEventListener('click', function(event) {
-  if (event.target == modal) {
+  if (event.target == modal || event.target == modal_rules){
     modal.style.display = "none";
+    modal_rules.style.display = "none";
     location.reload();
   }
 });
 
+// modal X closing button
 span.addEventListener('click', () => {
   modal.style.display = "none";
+  modal_rules.style.display = "none";
   location.reload();
 });
 
+// new game button
 new_game.addEventListener('click', () => {
   modal.style.display = "none";
   location.reload();
 });
 
+// rules botton
+rules.addEventListener('click', () => {
+  modal_rules.style.display = "block";
+});
 
-// **************************************
+//close rules button
+close_rules_modal.addEventListener('click', () => {
+   modal_rules.style.display = "none";
+ });
 
-// Timer function
-function countdown( elementName, minutes, seconds )
-{
-    var element, endTime, hours, mins, msLeft, time;
 
-    function twoDigits( n )
-    {
-        return (n <= 9 ? "0" + n : n);
-    }
 
-    function updateTimer()
-    {
-        msLeft = endTime - (+new Date);
-        if ( msLeft < 1000 ) {
-            element.innerHTML = "Time is up!";
-        } else {
-            time = new Date( msLeft );
-            hours = time.getUTCHours();
-            mins = time.getUTCMinutes();
-            element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
-            setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
-        }
-    }
 
-    element = document.getElementById( elementName );
-    endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
-    updateTimer();
-}
 
-// time is up modal
-function timeUp() {
-  let message3 = document.querySelector('.end-message-3');
-  modal.style.display = "block";
-  document.querySelector('.end-message-1').textContent = "Time is up!";
-  document.querySelector('.end-message-2').textContent = "Game over";
-  message3.textContent = `Try again.`;
-  modal.style.display = "none";
-}

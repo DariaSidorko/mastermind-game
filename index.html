@@ -11,9 +11,11 @@
 <body>
   <div class="main">
     <div class="header-container">
-      <h2>Mastermind</h2>
+      <h2>MASTERMIND</h2>
+      <button class="rule-btn rules">Game Rules</button>
     </div>
     <div class = "setting-container">
+      
       <form class = "attempts-form">
         <h3>Number of attempts</h3>
         <div class = "label-list">
@@ -30,7 +32,7 @@
         <div class = "label-list">
           <input type="radio" id="time1" name="time" value="0" checked>
           <label for="time1">none</label checkedl><br>
-          <input type="radio" id="time2" name="time" value="1">
+          <input type="radio" id="time2" name="time" value="10">
           <label for="time2">10 min</label><br> 
           <input type="radio" id="time3" name="time" value="15">
           <label for="time1">15 min</label ><br>
@@ -38,7 +40,7 @@
         <!-- <input type="submit" value="Submit"> -->
       </form>
 
-      <button class="generic-btn start">Start</button>
+      <button class="generic-btn start">START</button>
 
     </div>
     
@@ -49,19 +51,21 @@
         <span class="dot secret"><p class = "question-mark">?</p></span>
         <span class=" dot secret"><p class = "question-mark">?</p></span>
         <span class="dot secret"><p class = "question-mark">?</p></span>
-        <p class = "attempts"> </p>
+        
       </div>
       <div class = "row-container">
-        <span class = "game-comments">COLORS:</span>
-        <span class = "row-container">
+          <span class = "game-comments">COLORS:</span>
           <span class="colors-dot purple"></span>
           <span class="colors-dot yellow"></span>
           <span class="colors-dot green"></span>
           <span class="colors-dot pink"></span>
           <span class="colors-dot orange"></span>
           <span class="colors-dot blue"></span>
-          <span id="ten-countdown"></span>
-        </span>
+      </div>
+      <div class="row-container">
+        <span class = "game-comments">Attempts left: </span>
+        <p class = "attempts"> </p>
+        <span id="timer"></span>
       </div>
       <p class="error-message">Please choose all 4 colors</p>
       <div class="row-container">
@@ -74,6 +78,7 @@
       </div>
       <div class = "attempt-history-container">
         <div class="each-attempt-history">
+          <span class="attempt-num "></span>
           <span class="dot-medium "></span>
           <span class="dot-medium "></span>
           <span class="dot-medium "></span>
@@ -88,13 +93,15 @@
               <span class="dot-small"></span>
             </div>
           </span>
+         
         </div>
       </div>
       
     </div>
   </div>
 
-  <div id="myModal" class="modal">
+  <!-- Win / loose modal -->
+  <div id="winLooseModal" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -106,27 +113,44 @@
         <button class = "generic-btn new-game">NEW GAME</button>
       </div>
     </div>
-  
-  </div>
-
-  <!-- <div class = "attempt-history-container history-template">
-    <div class="each-attempt-history">
-      <span class="dot-medium-1"></span>
-      <span class="dot-medium-2"></span>
-      <span class="dot-medium-3"></span>
-      <span class="dot-medium-4"></span>
-      <span class = "reply-container">
-        <div>
-          <span class="dot-small"></span>
-          <span class="dot-small"></span>
-        </div>
-        <div>
-          <span class="dot-small"></span>
-          <span class="dot-small"></span>
-        </div>
-      </span>
     </div>
-  </div> -->
+
+    <!-- rules of the game modal -->
+    <div id="rulesModal" class="modal">
+      <!-- Modal content -->
+      <div class="rules-modal-content">
+        <!-- <span class="close">&times;</span> -->
+        <h1>Mastermind Game Rules</h1>
+        <div class = "rules-container">
+          <h2>Objective of the Game</h2>
+          <p>To break the secret color code in the least number of steps(guesses). <br>
+          Computers goal as a code maker is to set a mystery code so cunning that it will keep your guessing for as long as possible. <br>
+          As the Decoder: you must break the secret code in the fewest number of guesses.</p>
+          <h2>Game Play</h2>
+          <p>1. Decoder(you) can begin guessing, trying to duplicate the exact colors and positions of the hidden Code pegs. Each guess is made by choosing colors on the players row with the send button. <br>
+            2. After every guess, the Codemaker(computer) must inform the Decoder(you) of their progress using four smaller dots on the right side of each lower row(gueses history)</p>
+          <h2>Codemaker(computer) reply explained</h2>
+          <p>Codemaker(computer) uses the right side of each lower row(gueses history) to provide a feedback on each player's guess</p>
+          <h2>Green Indicator</h2>
+          <p>green peg displays the number of pegs that are the correct colors in the correct positions.</p>
+          <h2>White Indicator</h2>
+          <p>Pull out the corresponding white arm to display the number of pegs that are the correct colors but in incorrect positions.
+            Example: In this case the player has two pegs that are the correct colors but are in the wrong positions. The Codemaker pulls the WHITE slider two spaces. They also have one peg of the correct color and in the correct position.<br><br>
+            
+            The red slider is pulled out one space. Decoders: if the Decoder breaks the secret code, the Codemaker pulls out the red indicator arm next to the correct combination so that it displays the number 4 and reveals the hidden code by turning the unit around. That game is over. Tally the score and change roles.</p>
+          <h2>End of the Game</h2>
+          <p>At the end of each game, the Codemaker scores one point for every line of Code pegs placed by the Decoder. If the Decoder does not crack the code in nine attempts, that game is over and the Codemaker scores nine points.<br><br>
+
+            Make a note of your score after each game. Players switch roles at the end of each game. When you have completed the agreed number of games, add up your scores - the player with the highest score is the winner.</p>
+
+
+            <p>At the end of each game, the Codemaker scores one point for every line of Code pegs placed by the Decoder. If the Decoder does not crack the code in nine attempts, that game is over and the Codemaker scores nine points.<br><br>
+
+              Make a note of your score after each game. Players switch roles at the end of each game. When you have completed the agreed number of games, add up your scores - the player with the highest score is the winner.</p>
+        </div>
+        <button class = "generic-btn close-rules-modal">CLOSE</button>
+      </div>
+  </div>
   <script src="script.js"></script>
 </body>
 
