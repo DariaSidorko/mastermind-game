@@ -13,9 +13,9 @@ Those instructions will help you to install and run the game on your local devic
 
 ## Built With
 
-JavaScript 
-HTML5 - DOM
-CSS 
+* JavaScript 
+* HTML5 - DOM
+* CSS 
 
 ## Installation
 

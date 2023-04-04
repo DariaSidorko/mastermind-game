@@ -14,8 +14,10 @@
       <h2>MASTERMIND</h2>
       <button class="grey-btn rules">Game Rules</button>
     </div>
+
+    <!-- Home screen settings -->
     <div class = "setting-container">
-      
+      <!-- Attempts -->
       <form class = "attempts-form">
         <h3>Number of attempts</h3>
         <div class = "label-list">
@@ -27,6 +29,7 @@
           <label for="att3">6</label><br>
         </div>
       </form>
+      <!-- Timer -->
       <form class = "time-form">
         <h3>Timer options</h3>
         <div class = "label-list">
@@ -37,22 +40,22 @@
           <input type="radio" id="time3" name="time" value="15">
           <label for="time1">15 min</label ><br>
         </div>
-        <!-- <input type="submit" value="Submit"> -->
       </form>
 
       <button class="generic-btn start">START</button>
       <button class="grey-btn winners">Winners</button>
     </div>
     
-
+    <!-- Main game container -->
     <div class="game-container">
       <div class="row-container">
         <span class="dot secret"><p class = "question-mark">?</p></span>
         <span class="dot secret"><p class = "question-mark">?</p></span>
         <span class=" dot secret"><p class = "question-mark">?</p></span>
         <span class="dot secret"><p class = "question-mark">?</p></span>
-        
       </div>
+
+       <!-- Game colors row -->
       <div class = "row-container">
           <span class = "game-comments">COLORS:</span>
           <span class="colors-dot purple"></span>
@@ -62,20 +65,26 @@
           <span class="colors-dot orange"></span>
           <span class="colors-dot blue"></span>
       </div>
+
+      <!-- Attempt & timer counter row -->
       <div class="row-container">
         <span class = "game-comments">Attempts left: </span>
         <p class = "attempts"> </p>
         <span id="timer"></span>
       </div>
+      <!-- Errror message -->
       <p class="error-message">Please choose all 4 colors</p>
+
+      <!-- Players input row -->
       <div class="row-container">
         <span class="color1 dot btn "></span>
         <span class="color2 dot btn "></span>
         <span class="color3 dot btn "></span>
         <span class="color4 dot btn "></span>
         <i class="fa fa-solid fa-arrow-right fa-md attempt-btn"></i>
-        <!-- <i class="fa fa-solid fa-play"></i> </i>  -->
       </div>
+
+      <!-- Dynamically populated history row -->
       <div class = "attempt-history-container">
         <div class="each-attempt-history">
           <span class="attempt-num "></span>
@@ -115,7 +124,7 @@
     </div>
     </div>
 
-    <!-- rules of the game modal -->
+    <!-- Rules of the game modal -->
     <div id="rules-modal" class="modal">
       <!-- Modal content -->
       <div class="settings-modal-content">
@@ -145,7 +154,7 @@
   </div>
 
 
-  <!-- rules of the game modal -->
+  <!-- Wall of fame modal -->
   <div id="winners-modal" class="modal">
     <!-- Modal content -->
     <div class="settings-modal-content">
