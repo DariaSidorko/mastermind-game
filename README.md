@@ -3,7 +3,7 @@
 live site link:
 https://dariasidorko.github.io/mastermind-game/
 
-![game screen](./images/game_screen.jpg)
+![game screen](./images/game_screen_small.jpg)
 
 
 # About The Project
@@ -27,8 +27,8 @@ To clone this project onto your devise, copy the following line into your termin
 
 git clone https://github.com/DariaSidorko/mastermind-game.git
 
-Get a free API Key at https://example.com
 Clone the repo
+
 git clone https://github.com/your_username_/Project-Name.git
 
 * to run the game, right click on Index.html and pick the browser of your choice.
@@ -61,6 +61,7 @@ Project Link: https://github.com/DariaSidorko/mastermind-game.git
 ## Acknowledgments
 
 GitHub Pages
+
 Font Awesome
 
 ## License
