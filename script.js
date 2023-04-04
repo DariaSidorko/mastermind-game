@@ -36,11 +36,15 @@ let history_container = document.querySelector('.attempt-history-container');
 let new_game = document.querySelector('.new-game');
 let attemptsLeft = document.querySelector('.attempts');
 let modal =  document.querySelector("#winLooseModal");
-let modal_rules =  document.querySelector("#rulesModal");
 let message3 = document.querySelector('.end-message-3');
-let rules = document.querySelector('.rule-btn');
+
+let modal_rules =  document.querySelector("#rules-modal");
+let rules = document.querySelector('.rules');
 let close_rules_modal = document.querySelector('.close-rules-modal');
 
+let winners_modal = document.querySelector('#winners-modal');
+let winners = document.querySelector('.winners');
+let close_winners_modal = document.querySelector('.close-winners-modal');
 
 // generating random colors for the computer code
 computerColors = randomColorsArray(numberOfColors);
@@ -220,7 +224,7 @@ attempt_btn.addEventListener('click', (e) => {
     // second round of iterations to mark all the color matches, but wrong position (white)
     for (let i=0; i<tempPlayerColors.length; i++){
       for (let j=0; j<computerColors.length; j++){
-      if (tempPlayerColors[i] === computerColors[j]){
+      if (tempPlayerColors[i] === tempComputerColors[j]){
           computerAnswer[answerIterator] = 'white';
           answerIterator++;
           tempComputerColors[j] = '#';
@@ -306,10 +310,12 @@ attempt_btn.addEventListener('click', (e) => {
 
 // modal closing when clicked outside of the modal
 window.addEventListener('click', function(event) {
-  if (event.target == modal || event.target == modal_rules){
+  if (event.target == modal){
     modal.style.display = "none";
-    modal_rules.style.display = "none";
     location.reload();
+  } else if(event.target == modal_rules || event.target == winners_modal){
+    modal_rules.style.display = "none";
+    winners_modal.style.display = "none";
   }
 });
 
@@ -335,6 +341,15 @@ rules.addEventListener('click', () => {
 close_rules_modal.addEventListener('click', () => {
    modal_rules.style.display = "none";
  });
+
+ winners.addEventListener('click', () => {
+  winners_modal.style.display = "block";
+});
+
+//close winners button
+close_winners_modal.addEventListener('click', () => {
+  winners_modal.style.display = "none";
+});
 
 
 

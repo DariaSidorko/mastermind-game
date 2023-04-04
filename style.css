@@ -31,21 +31,23 @@ h1{
   font-weight: 600;
   letter-spacing: 1px;
   text-align: center;
+  font-size: 26px;
 }
 
 h2{
   font-weight: 100;
   letter-spacing: 3px;
+  font-size: 18px;
 }
 
 h3{
   font-weight: 100;
   letter-spacing: 1px;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 p{
-  font-size: 17px;;
+  font-size: 14px;;
 }
 
 .main{
@@ -56,9 +58,9 @@ p{
   margin: 3% 33%;
   padding-bottom: 5%;
   border-radius: 20px;
-  min-height: 80vh;
-  min-width: 450px;
-  max-width: 600px;
+  min-height: 70vh;
+  min-width: 400px;
+  max-width: 400px;
 }
 
 .setting-container{
@@ -66,7 +68,7 @@ p{
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding-top: 20px;
+  padding-top: 10px;
   animation: fadeIn 1.5s;
   color:#4db277;
 }
@@ -83,19 +85,18 @@ form{
   display: flex;
   align-items: center;
   flex-direction: row;
-  padding: 20px 0;
+  padding: 15px 0;
 }
 
 input{
-  margin-left: 35px;
   appearance: none;
   -webkit-appearance: none;
   border-radius: 50%;
   background:#45a26c;
   background-color: #c8c8c8;
   color: #a8a4a4;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   border: 3px solid #45a26c;
   box-shadow: 0 0 0 1px rgb(183, 183, 183)
   /* outline: 1px solid #999; */
@@ -110,8 +111,9 @@ input:checked{
 }
 
 label{
-  padding-left: 10px;
-  font-size: 18px;
+  padding-left: 8px;
+  padding-right: 18px;
+  font-size: 14px;
   color: #adadad;
 }
 
@@ -127,7 +129,7 @@ label{
   background-color: #333333;
   color: #979797;
   margin: 70px  0px 30px 0px;
-  padding: 30px 0px;
+  padding: 20px 0px;
   width: 100%;
 }
 
@@ -145,7 +147,7 @@ label{
 .dot {
   height: 1px;
   width: 1px;
-  padding: 25px;
+  padding: 22px;
   margin: 4px 4px;
   background-color: #3a3a3a;
   border-radius: 50%;
@@ -154,17 +156,16 @@ label{
 .dot-medium {
   height: 1px;
   width: 1px;
-  padding: 22px;
+  padding: 18px;
   margin: 4px 4px;
   background-color: #232323;
   border-radius: 50%;
 }
 
 .dot-small{
-  height: 1px;
-  width: 1px;
-  padding: 8px;
-  margin: 2px;
+  height: 3px;
+  width: 3px;
+  padding: 6px;
   background-color: #2a2a2a;
   border-radius: 50%;
   display: inline-block;
@@ -174,7 +175,7 @@ label{
 .secret{
   height: 20px;
   width: 20px;
-  padding: 15px;
+  padding: 12px;
   border-width: 2px;
   border-style: solid;
   border-color: #40815b;
@@ -197,7 +198,7 @@ label{
 
 .question-mark{
   padding-left: 4px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 
@@ -211,14 +212,15 @@ label{
 
 .game-comments{
   color: #56b07c;
-  padding: 2px 10px 0 10px;
+  padding: 6px 5px 0 10px;
+  font-size: 14px;
 }
 
 .colors-dot{
   height: 1px;
   width: 1px;
-  padding: 7px;
-  margin: 4px 4px;
+  padding: 5px;
+  margin: 5px 3px 0 3px;
   background-color: #3a3a3a;
   border-radius: 50%;
 }
@@ -228,7 +230,8 @@ label{
 .error-message{
   color: white;
   background-color: rgb(222, 0, 0);
-  font-size: 16px;
+  font-size: 14px;
+  padding: 2px 2px 2px 15px;
   /* padding-top: 12px; */
   visibility: hidden;
 }
@@ -241,14 +244,14 @@ label{
 
 .attempts{
   color: #56b07c;
-  font-size: 35px;
-  margin: 4px 0 0 15px;
+  font-size: 30px;
+  margin: 6px 0 0 8px;
 }
 
 .attempt-row{
   display: flex;
   align-items: center;
-  margin: 15px 0;
+  margin: 12px 0;
   /* border: #56b07c;
   border-width: 2px;
   border-style: solid;
@@ -259,68 +262,80 @@ label{
 }
 
 .btn:hover {
-  opacity: 0.6;
+  opacity: 0.9;
   cursor:pointer;
+  box-shadow: 0px 0px 6px 3px rgb(170, 170, 170);
 }
 
 .generic-btn{
   background-color:#499267;
   color: white;
-  font-size: 16px;
-  padding: 20px 40px;
+  font-size: 13px;
+  padding: 14px 40px;
   border-radius: 10px;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 .generic-btn:hover{
-  background-color: #62c58b;
+  background-color: #58ae7c;
   cursor:pointer;
   border-radius: 10px;
   border-color: white;
   border-width: 1px;
   border-style: solid;
-  zoom: 102%;
+  zoom: 101%;
 }
 
 .attempt-btn{
   background-color:#499267;
   color: white;
   margin: 0 0 0px 20px;
-  padding: 15px 18px;
+  padding: 13px 16px;
   border-radius: 15%;
+  border-color: none;
+  border-width: 1px;
 }
 
 .attempt-btn:hover{
   background-color: #62c58b;;
   cursor:pointer;
-  scale: 1.05;
+  /* scale: 1.01; */
   border-color: white;
-  border-width: 1px;
+  border-width: 0.5px;
   border-style: solid;
 }
 
-.rule-btn{
+.grey-btn{
   background-color:#333333;
   color: rgb(174, 174, 174);
-  font-size: 16px;
-  padding: 6px 30px;
+  font-size: 13px;
+  padding: 3px 30px;
   border-radius: 10px;
-  margin-top: 20px;
+  margin-top: 10px;
   border-color: rgb(113, 113, 113);
   border-width: 1px;
   border-style: solid;
   
 }
 
-.rule-btn:hover{
+.grey-btn:hover{
   cursor:pointer;
-  scale: 1.05;
-  border-color: rgb(113, 113, 113);
+  scale: 1.03;
+  border-color: rgb(159, 159, 159);
   border-width: 1px;
   border-style: solid;
-  background-color:#505050;
+  background-color:#434242;
 }
 
+.setting-container > .grey-btn{
+  padding: 14px 35px;
+  background-color:#262626;
+  border-color: rgb(80, 80, 80);
+}
+
+.setting-container > .grey-btn:hover{
+  background-color:#2d2d2d;
+}
 
 .attempt-history-container{
   display: flex;
@@ -440,13 +455,14 @@ label{
   background-color: #121212;
   color: #499267;
   /* margin: auto; */
-  margin: 7% 33%;
+  margin: 3% 33%;
   min-height: 50%;
   padding: 20px 20px;
   border: 1px solid #333333;
   border-radius: 20px;
-  min-width: 420px;
-  max-width: 570px;
+  min-height: 70vh;
+  min-width: 360px;
+  max-width: 360px;
 }
 
 /* The Close Button */
@@ -471,9 +487,9 @@ label{
 /* *********************** */
 
 #timer {
-  margin: 5px 0 0 30px;
+  margin: 5px 0 0 25px;
   color: #56b07c;
-  font-size: 35px;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -484,7 +500,7 @@ label{
 }); */
 
 
-.rules-modal-content{
+.settings-modal-content{
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -495,10 +511,10 @@ label{
   padding: 40px 30px;
   border: 1px solid #333333;
   border-radius: 20px;
-
+  min-height: 70vh;
   max-height: 80vh;
-  min-width: 450px;
-  max-width: 600px;
+  min-width: 341px;
+  max-width: 341px;
 }
 
 .rules-container{
@@ -517,11 +533,11 @@ div.rules-container > p{
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-div.rules-modal-content > button{
+div.settings-modal-content > button{
   margin-top: 30px;
 }
 
-div.rules-modal-content > h1{
+div.settings-modal-content > h1{
   padding-bottom: 30px;
 }
 
@@ -552,3 +568,4 @@ font-size: 40px;
 padding-right: 10px;
 min-width: 15px;
 }
+
