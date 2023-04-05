@@ -83,31 +83,26 @@ function isWon(array){
 }
 
 // Timer function
-function countdown( elementName, minutes, seconds )
-{
-    var element, endTime, hours, mins, msLeft, time;
-
-    function twoDigits( n )
-    {
+function countdown( elementName, minutes, seconds ){
+  let element, endTime, hours, mins, msLeft, time;
+    function twoDigits(n){
         return (n <= 9 ? "0" + n : n);
     }
-    function updateTimer()
-    {
-        msLeft = endTime - (+new Date);
+    function updateTimer(){
+      msLeft = endTime - (+new Date);
         if ( msLeft < 1000 ) {
-            element.innerHTML = "0";
+          element.innerHTML = "0";
         } else {
-            time = new Date( msLeft );
-            hours = time.getUTCHours();
-            mins = time.getUTCMinutes();
-            element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
-            setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
+          time = new Date( msLeft );
+          hours = time.getUTCHours();
+          mins = time.getUTCMinutes();
+          element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
+          setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
         }
     }
-
-    element = document.getElementById( elementName );
-    endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
-    updateTimer();
+  element = document.getElementById(elementName);
+  endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
+  updateTimer();
 }
 
 
@@ -123,7 +118,9 @@ function timeUp() {
 //hiding game area ho display settings on the home screen first
 game_area.classList.add('remove');
 
-// main start of the game button
+
+
+// MAIN START OF THE GAME BUTTON
 start.addEventListener('click', (e) => {
 
   // hiding settings, displaying main game area with fade in effect
@@ -182,7 +179,9 @@ for (let i=1; i<5; i++){
 
 
 
-// main game logic
+
+
+// MAIN GAME LOGIC
 attempt_btn.addEventListener('click', (e) => {
   let playerColors = [];
   // error tracker for players input
